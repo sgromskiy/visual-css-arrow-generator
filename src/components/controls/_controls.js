@@ -1,10 +1,15 @@
 import { useState } from "react";
 import classNames from "classnames";
+import InputRange from './_range';
+import SquareControl from './_square';
+import './controls.scss';
+
 const DEMO_SIZE = 100;
 
 export function Controls() {
   const [x, setX] = useState(DEMO_SIZE / 2);
   const [y, setY] = useState(DEMO_SIZE / 2);
+  const [size, setSize] = useState(10);
   const [directionHoverClassName, setdirectionHoverClassName] = useState(null);
   const [directionClassName, setdirectionClassName] = useState("bottom");
   const [hoverSize, setHoverSize] = useState((DEMO_SIZE * Math.sqrt(2)) / 2);
@@ -15,6 +20,10 @@ export function Controls() {
 
   const updateY = (e) => {
     setY(e.target.value);
+  };
+  
+  const updateSize = (e) => {
+    setSize(e.target.value);
   };
 
   const handleHover = (e) => {
@@ -32,66 +41,38 @@ export function Controls() {
 
   return (
     <div className="q-controls">
-      <input
-        name="x"
-        value={x}
-        min={0}
-        max={DEMO_SIZE}
-        type="range"
-        onChange={updateX}
-      />
-      <input
-        name="y"
-        data-orientation="vertical"
-        value={y}
-        min={0}
-        max={DEMO_SIZE}
-        type="range"
-        onChange={updateY}
-      />
-      <div
-        style={{
-          "--q-width": `${DEMO_SIZE}px`,
-          "--q-x": `${x}px`,
-          "--q-y": `${y}px`,
-          "--q-hover-width": `${hoverSize}px`
-        }}
-        className={classNames("square-control", {
-          [`square-control--hover-${directionHoverClassName}`]: directionHoverClassName,
-          [`square-control--active-${directionClassName}`]: directionClassName
-        })}
-      >
-        <div onMouseLeave={handleBlur} className="square-control__field">
-          <div className="square-control__hover square-control__right">
-            <span
-              data-name="right"
-              onClick={setOrientation}
-              onMouseEnter={handleHover}
-            />
-          </div>
-          <div className="square-control__hover square-control__left">
-            <span
-              data-name="left"
-              onClick={setOrientation}
-              onMouseEnter={handleHover}
-            />
-          </div>
-          <div className="square-control__hover square-control__bottom">
-            <span
-              data-name="bottom"
-              onClick={setOrientation}
-              onMouseEnter={handleHover}
-            />
-          </div>
-          <div className="square-control__hover square-control__top">
-            <span
-              data-name="top"
-              onClick={setOrientation}
-              onMouseEnter={handleHover}
-            />
-          </div>
-        </div>
-      </div>
+        <InputRange 
+            className="q-controls__range-x" 
+            value={x} 
+            max={DEMO_SIZE} 
+            onChange={updateX}
+        />
+        <InputRange 
+            className="q-controls__range-y" 
+            value={y} 
+            max={DEMO_SIZE} 
+            onChange={updateY}
+        />
+
+        <style>
+            {
+            `:root {
+                --q-width: ${DEMO_SIZE}px;
+                --q-x: ${x}px;
+                --q-y: ${y}px;
+            --q-hover-width: ${hoverSize}px;
+                }`
+            }
+        </style>
+        <SquareControl 
+            handleClick={setOrientation} 
+            handleMouseEnter={handleHover} 
+            handleBlur={handleBlur} 
+            directionHoverClassName={directionHoverClassName} 
+            directionClassName={directionClassName}
+        />
+        <input className="q-controls__size-h" value={size} onChange={updateSize} />
+        <input className="q-controls__size-v" value={size} readOnly />
     </div>
   );
 }

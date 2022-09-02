@@ -9,9 +9,9 @@ const DEMO_SIZE = 100;
 export function App() {
 
   return (
-    <div classNames="section">
-      <div classNames="container">
-        <div class="main">
+    <div className="section">
+      <div className="container">
+        <div className="main">
           <Controls />
           <Visualizator />
         </div>

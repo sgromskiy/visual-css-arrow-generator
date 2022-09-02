@@ -30,14 +30,9 @@ body {
   align-items: center;
 }
 
-[data-orientation="vertical"] {
-  width: 10px;
-  height: 100px;
-  writing-mode: bt-lr; /* IE */
-  -webkit-appearance: slider-vertical; /* Chromium */
-}
 
-.square-control {
+
+.q-square-control {
   background: coral;
   position: relative;
   width: var(--q-width, 100px);
@@ -45,7 +40,8 @@ body {
   
   &__field {
     width: 0;
-    border: solid coral;
+    height: 0;
+    border: solid transparent;
     border-left-width: var(--q-x);
     border-right-width: calc(var(--q-width) - var(--q-x));
     border-top-width: calc(var(--q-width) - var(--q-y));

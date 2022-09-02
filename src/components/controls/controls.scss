@@ -1,0 +1,38 @@
+.q-controls {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: " . hcontrol ."
+                 "vsize field vcontrol"
+                 ". hsize .";
+}
+
+.q-controls__range-x {
+    grid-area: hcontrol;
+}
+
+.q-controls__range-y {
+  width: 10px;
+  height: 100px;
+  writing-mode: bt-lr; /* IE */
+  -webkit-appearance: slider-vertical; /* Chromium */
+  grid-area: vcontrol;
+}
+
+.q-square-control {
+    grid-area: field;
+}
+
+.q-controls__size-h {
+   grid-area: hsize;
+}
+
+.q-controls__size-v {
+   grid-area: vsize;
+}
+
+[readonly] {
+    pointer-events: none;
+    user-select: none;
+}

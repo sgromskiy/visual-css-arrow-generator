@@ -4,7 +4,7 @@ import './visualizator.scss'
 export function Visualizator() {
     return (
         <div className="q-visualizator">
-            ddd
+            <div className="q-visualizator__triangle">d</div>
         </div>
     );
 }

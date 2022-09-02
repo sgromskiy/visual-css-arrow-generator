@@ -1,5 +1,22 @@
-.visualizator {
+.q-visualizator {
     width: 200px;
     aspect-ratio: 1 / 1;
     background: white;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    
+    &__triangle{
+        width: 0;
+        height: 0;
+        border: solid transparent;
+        border-left-width: var(--q-x);
+        border-right-width: calc(var(--q-width) - var(--q-x));
+        border-top-width: calc(var(--q-width) - var(--q-y));
+        border-bottom-width: var(--q-y);
+        border-top-color: var(--q-border-top-color);
+        border-right-color: var(--q-border-right-color);
+        border-bottom-color: var(--q-border-bottom-color);
+        border-left-color: var(--q-border-left-color);
+    }
 }
