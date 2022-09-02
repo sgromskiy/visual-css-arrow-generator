@@ -9,6 +9,26 @@
   --q-border-left-color: var(--q-color-inactive);
   
 }
+html { box-sizing: border-box; }
+html * { box-sizing: inherit; }
+body {
+  background: #fefefe;
+}
+
+.section {
+  padding: 5rem 0;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 72rem;
+}
+
+.main {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
 
 [data-orientation="vertical"] {
   width: 10px;

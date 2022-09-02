@@ -3,4 +3,4 @@ import {App} from './_app'
 
 createRoot(
   document.getElementById('root')
-).render(<App />)
+).render(<App>Loading...</App>)
