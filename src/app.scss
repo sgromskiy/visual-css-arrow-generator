@@ -1,0 +1,109 @@
+:root {
+  --q-color-inactive: lavender;
+  --q-color-hover: MediumPurple;
+  --q-color-active: RebeccaPurple;
+
+  --q-border-top-color: var(--q-color-inactive);
+  --q-border-right-color: var(--q-color-inactive);
+  --q-border-bottom-color: var(--q-color-inactive);
+  --q-border-left-color: var(--q-color-inactive);
+  
+}
+
+[data-orientation="vertical"] {
+  width: 10px;
+  height: 100px;
+  writing-mode: bt-lr; /* IE */
+  -webkit-appearance: slider-vertical; /* Chromium */
+}
+
+.square-control {
+  background: coral;
+  position: relative;
+  width: var(--q-width, 100px);
+  overflow: hidden;
+  
+  &__field {
+    width: 0;
+    border: solid coral;
+    border-left-width: var(--q-x);
+    border-right-width: calc(var(--q-width) - var(--q-x));
+    border-top-width: calc(var(--q-width) - var(--q-y));
+    border-bottom-width: var(--q-y);
+    border-top-color: var(--q-border-top-color);
+    border-right-color: var(--q-border-right-color);
+    border-bottom-color: var(--q-border-bottom-color);
+    border-left-color: var(--q-border-left-color);
+  }
+
+  &--active-right {
+    --q-border-right-color: var(--q-color-active)  !important;
+  }
+
+  &--hover-right {
+    --q-border-right-color: var(--q-color-hover);
+  }
+
+  &--active-top {
+    --q-border-top-color: var(--q-color-active) !important;
+  }
+
+  &--hover-top {
+    --q-border-top-color:  var(--q-color-hover);
+  }
+
+  &--active-left {
+    --q-border-left-color: var(--q-color-active)  !important;
+  }
+
+  &--hover-left {
+    --q-border-left-color: var(--q-color-hover);
+  }
+
+  &--active-bottom {
+    --q-border-bottom-color: var(--q-color-active) !important;
+  }
+
+  &--hover-bottom {
+    --q-border-bottom-color: var(--q-color-hover);
+  }
+
+  &__hover {
+    position: absolute;
+    aspect-ratio: 1 / 1;
+    width: var(--q-hover-width, 80%);
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+    
+    span {
+      content: '';
+      // background: green;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      display: block;
+      transform: rotate(45deg);
+
+      &:hover {
+        // background: lightgreen;
+      }
+    }
+  }
+
+  &__right {
+    margin-left: calc(var(--q-width) / 2);
+  }
+
+  &__left {
+    margin-left: calc(var(--q-width) / -2);
+  }
+
+  &__top {
+    margin-top: calc(var(--q-width) / -2);
+  }
+
+  &__bottom {
+    margin-top: calc(var(--q-width) / 2);
+  }
+
+}
